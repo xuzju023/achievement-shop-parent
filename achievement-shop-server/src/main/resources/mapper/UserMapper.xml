@@ -1,0 +1,19 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="com.xzj.achievementshop.mapper.UserMapper">
+    <select id="getAllUser" resultType="com.xzj.achievementshop.model.User">
+    SELECT * FROM USER ;
+    </select>
+
+    <insert id="insert" parameterType="com.xzj.achievementshop.model.User">
+        INSERT INTO  USER(username,password,totalCoin) VALUES (#{userName},#{password},#{totalCoin})
+    </insert>
+
+    <update id="update" parameterType="com.xzj.achievementshop.model.User">
+    UPDATE  USER  SET userName=#{userName},password=#{password},totalCoin=#{totalCoin} WHERE id=#{id}
+    </update>
+
+    <delete id="delete" parameterType="long">
+        DELETE FROM  USER  WHERE id=#{id}
+    </delete>
+</mapper>

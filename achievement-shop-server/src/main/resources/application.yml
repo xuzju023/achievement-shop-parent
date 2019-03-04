@@ -1,0 +1,18 @@
+server:
+  port: 8081
+
+mybatis:
+#    type-aliases-package: com.example.domain.model
+#    type-handlers-package: com.example.typehandler
+    configuration:
+        map-underscore-to-camel-case: true
+        default-fetch-size: 100
+        default-statement-timeout: 30
+    mapperLocations: classpath*:mapper/*.xml
+
+
+spring:
+  datasource:
+    username: root
+    password: 123456
+    url: jdbc:mysql://localhost:3306/test?useUnicode=true&characterEncoding=utf-8&useSSL=true&serverTimezone=UTC
