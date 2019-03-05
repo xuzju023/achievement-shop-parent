@@ -1,57 +1,74 @@
 <template>
-    <Form ref="formInline" :model="formInline" :rules="ruleInline" inline>
-        <FormItem prop="userName">
-            <input type="text" v-model="formInline.userName" placeholder="Username">
-            <Icon type="ios-person-outline" slot="prepend"></Icon>
-            <input/>
-        </FormItem>
-        <FormItem prop="password">
-            <input type="password" v-model="formInline.password" placeholder="Password">
-            <Icon type="ios-lock-outline" slot="prepend"></Icon>
-            <input/>
-        </FormItem>
-        <FormItem>
-            <Button type="primary" @click="handleSubmit('formInline')">Signin</Button>
-        </FormItem>
-    </Form>nn
-</template>
-<script>
-    import Input from "../../node_modules/iview/src/components/input/input.vue";
+  <div id="login">
+    <el-form :model="loginForm" :rules="loginRules">
+      <h2>DesireShop</h2>
+      <el-form-item prop="username">
+        <el-input v-model="loginForm.username"  placeholder="请输入用户名/手机号" auto-complete="on"></el-input>
+      </el-form-item>
 
-    export default {
-      components: {Input},
-      data() {
-            return {
-                formInline: {
-                    userName: '',
-                    password: ''
-                },
-                ruleInline: {
-                    userName: [
-                        {required: true, message: 'Please fill in the user name', trigger: 'blur'}
-                    ],
-                    password: [
-                        {required: true, message: 'Please fill in the password.', trigger: 'blur'},
-                        {
-                            type: 'string',
-                            min: 6,
-                            message: 'The password length cannot be less than 6 bits',
-                            trigger: 'blur'
-                        }
-                    ]
-                }
-            }
+      <el-form-item>
+        <el-input v-model="loginForm.password"  placeholder="请输入密码" auto-complete="on"></el-input>
+      </el-form-item>
+
+      <el-form-item>
+        <el-button type="primary" @click="onSubmit">登录</el-button>
+      </el-form-item>
+    </el-form>
+  </div>
+</template>
+
+
+<script>
+  //先引入接口
+  import { loginReq } from '@/apis/login'
+  export default {
+    name: "#login",
+    data() {
+      return {
+        loginForm: {
+          username: '',
+          password: '',
         },
-        methods: {
-            handleSubmit(name) {
-                this.$refs[name].validate((valid) => {
-                    if (valid) {
-                        this.$Message.success('Success!');
-                    } else {
-                        this.$Message.error('Fail!');
-                    }
-                })
+        loginRules: {
+          username: [
+            {
+              required: true,
+
+              message: "请输入用户名",
+
+              trigger: "blur"
             }
+          ],
+          password: [
+            {
+              required: true,
+              message: '请输入密码',
+              trigger: 'blur'
+            }
+          ]
         }
+      }
+    },
+    methods: {
+      onSubmit() {
+        /*this.$refs.loginForm.validate((valid) => {
+          if(valid){
+            loginReq(this.loginForm.username,this.loginForm.password).then((res) => {
+              console.log(res.data.status);
+            })
+          }else{
+            console.log('用户名或密码错误')
+          }
+        })*/
+        loginReq(this.loginForm.username,this.loginForm.password).then((response)=>{
+          console.log(response)
+        })
+      }
     }
+  };
 </script>
+<style scoped>
+  .el-input {
+    width: 300px;
+  }
+</style>
