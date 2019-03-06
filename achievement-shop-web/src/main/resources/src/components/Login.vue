@@ -62,6 +62,12 @@
         postForm.post("http://localhost:8081/user/test",{
           userName: this.loginForm.username,
           passWord: this.loginForm.password
+        }).then((res)=>{
+          if(res.data.result=="true"){
+            alert(res.data.result)
+          }else {
+            alert(res.data.result)
+          }
         })
 
       }

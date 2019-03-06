@@ -10,4 +10,5 @@ import java.util.List;
  * @Date: Created in 15:09 2019/2/26
  */
 public interface UserService extends BaseService<User> {
+    User queryByUserName(String username);
 }

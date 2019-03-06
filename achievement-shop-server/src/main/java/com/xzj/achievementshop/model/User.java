@@ -9,7 +9,7 @@ import org.apache.tomcat.util.modeler.BaseModelMBean;
  */
 public class User extends BaseModel {
     private String userName;
-    private String password;
+    private String passWord;
     private int totalCoin;
 
     public String getUserName() {
@@ -20,12 +20,12 @@ public class User extends BaseModel {
         this.userName = userName;
     }
 
-    public String getPassword() {
-        return password;
+    public String getPassWord() {
+        return passWord;
     }
 
-    public void setPassword(String password) {
-        this.password = password;
+    public void setPassWord(String passWord) {
+        this.passWord = passWord;
     }
 
     public int getTotalCoin() {
@@ -40,7 +40,7 @@ public class User extends BaseModel {
     public String toString() {
         return "User{" +
                 "userName='" + userName + '\'' +
-                ", password='" + password + '\'' +
+                ", passWord='" + passWord + '\'' +
                 '}';
     }
 }
