@@ -19,8 +19,7 @@
 
 
 <script>
-  //先引入接口
-  import { loginReq } from '@/apis/login'
+  import { postForm } from '@/utils/postForm'
   export default {
     name: "#login",
     data() {
@@ -60,9 +59,11 @@
             console.log('用户名或密码错误')
           }
         })*/
-        loginReq(this.loginForm.username,this.loginForm.password).then((response)=>{
-          console.log(response)
+        postForm.post("http://localhost:8081/user/test",{
+          userName: this.loginForm.username,
+          passWord: this.loginForm.password
         })
+
       }
     }
   };

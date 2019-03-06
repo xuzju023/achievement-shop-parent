@@ -1,8 +1,8 @@
-import {request} from '@/utils/request'
+import { postForm } from '@/utils/postForm'
 
 export  function loginReq(username,password) {
-  return request.post('/login.json',{
-    loginName: username,
-    loginPassword: password
+  return postForm.post('http://localhost:8081/user/test',{
+    username: username,
+    password: password
   })
 }
